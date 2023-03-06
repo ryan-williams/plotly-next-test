@@ -1,5 +1,5 @@
 name: GitHub Pages
-on: { push: { branches: [ main ] } }
+on: { push: { branches: [ www ] } }
 jobs:
   build:
     name: Build + deploy to GitHub Pages
