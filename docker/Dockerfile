@@ -1,6 +1,6 @@
 ARG FROM=latest
 FROM node:$FROM
-RUN git clone -b www https://github.com/ryan-williams/plotly-next-test.git
+RUN git clone https://github.com/ryan-williams/plotly-next-test.git
 WORKDIR plotly-next-test
 ENV PATH=node_modules/.bin:$PATH NEXT_BASE_PATH=/plotly-next-test
 RUN npm install \
