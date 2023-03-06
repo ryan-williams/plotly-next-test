@@ -36,7 +36,7 @@ var _imageConfig = __webpack_require__(99309);
 var _imageConfigContext = __webpack_require__(59977);
 var _warnOnce = __webpack_require__(35086);
 var _imageLoader = _interop_require_default(__webpack_require__(61479));
-const configEnv = {"deviceSizes":[640,750,828,1080,1200,1920,2048,3840],"imageSizes":[16,32,48,64,96,128,256,384],"path":"/_next/image","loader":"default","dangerouslyAllowSVG":false,"unoptimized":true};
+const configEnv = {"deviceSizes":[640,750,828,1080,1200,1920,2048,3840],"imageSizes":[16,32,48,64,96,128,256,384],"path":"/plotly-next-test/_next/image","loader":"default","dangerouslyAllowSVG":false,"unoptimized":true};
 const allImgs = new Map();
 let perfObserver;
 if (false) {}

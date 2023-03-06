@@ -217,7 +217,7 @@ Object.defineProperty(exports, "__esModule", ({
 exports.addBasePath = addBasePath;
 var _addPathPrefix = __webpack_require__(95391);
 var _normalizeTrailingSlash = __webpack_require__(82392);
-const basePath =  false || "";
+const basePath = "/plotly-next-test" || 0;
 function addBasePath(path, required) {
     if (false) {}
     return (0, _normalizeTrailingSlash).normalizePathTrailingSlash((0, _addPathPrefix).addPathPrefix(path, basePath));
@@ -299,7 +299,7 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports.hasBasePath = hasBasePath;
 var _pathHasPrefix = __webpack_require__(1259);
-const basePath =  false || "";
+const basePath = "/plotly-next-test" || 0;
 function hasBasePath(path) {
     return (0, _pathHasPrefix).pathHasPrefix(path, basePath);
 }
@@ -639,7 +639,7 @@ function AppContainer(param) {
     }, /*#__PURE__*/ _react.default.createElement(_headManagerContext.HeadManagerContext.Provider, {
         value: headManager
     }, /*#__PURE__*/ _react.default.createElement(_imageConfigContext.ImageConfigContext.Provider, {
-        value: {"deviceSizes":[640,750,828,1080,1200,1920,2048,3840],"imageSizes":[16,32,48,64,96,128,256,384],"path":"/_next/image","loader":"default","dangerouslyAllowSVG":false,"unoptimized":true}
+        value: {"deviceSizes":[640,750,828,1080,1200,1920,2048,3840],"imageSizes":[16,32,48,64,96,128,256,384],"path":"/plotly-next-test/_next/image","loader":"default","dangerouslyAllowSVG":false,"unoptimized":true}
     }, children)))))));
 }
 const wrapApp = (App)=>(wrappedAppProps)=>{
@@ -1322,7 +1322,7 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports.removeBasePath = removeBasePath;
 var _hasBasePath = __webpack_require__(94119);
-const basePath =  false || "";
+const basePath = "/plotly-next-test" || 0;
 function removeBasePath(path) {
     if (false) {}
     path = path.slice(basePath.length);
@@ -4511,7 +4511,7 @@ class Router {
         // if auto prerendered and dynamic route wait to update asPath
         // until after mount to prevent hydration mismatch
         const autoExportDynamic = (0, _isDynamic).isDynamicRoute(pathname1) && self.__NEXT_DATA__.autoExport;
-        this.basePath =  false || "";
+        this.basePath = "/plotly-next-test" || 0;
         this.sub = subscription;
         this.clc = null;
         this._wrapApp = wrapApp;
@@ -6643,7 +6643,7 @@ if (true) {
 /******/ 	
 /******/ 	/* webpack/runtime/publicPath */
 /******/ 	!function() {
-/******/ 		__webpack_require__.p = "/_next/";
+/******/ 		__webpack_require__.p = "/plotly-next-test/_next/";
 /******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/jsonp chunk loading */
