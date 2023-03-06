@@ -1,5 +1,7 @@
 # plotly.js / next.js issues
 
+**Update:** it seems like the errors in the latter two pages below manifest on macOS but not Linux, possibly due to macOS filesystem case-insensitivity.
+
 Boot dev mode:
 ```bash
 next dev
