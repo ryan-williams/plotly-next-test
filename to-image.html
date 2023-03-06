@@ -1,0 +1,157 @@
+<!DOCTYPE html><html><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width"/><meta name="next-head-count" content="2"/><link rel="preload" href="/_next/static/css/601b2d1327443b43.css" as="style"/><link rel="stylesheet" href="/_next/static/css/601b2d1327443b43.css" data-n-g=""/><link rel="preload" href="/_next/static/css/dc69e84490b7b7e3.css" as="style"/><link rel="stylesheet" href="/_next/static/css/dc69e84490b7b7e3.css" data-n-p=""/><noscript data-n-css=""></noscript><script defer="" nomodule="" src="/_next/static/chunks/polyfills-c67a75d1b6f99dc8.js"></script><script src="/_next/static/chunks/main-88dd98b48dab5888.js" defer=""></script><script src="/_next/static/chunks/pages/_app-d45650b2598a4bf1.js" defer=""></script><script src="/_next/static/chunks/pages/to-image-27d47ebb0e987d0c.js" defer=""></script><script src="/_next/static/9gU2xRJ3DHodG3wnoSdW8/_buildManifest.js" defer=""></script><script src="/_next/static/9gU2xRJ3DHodG3wnoSdW8/_ssgManifest.js" defer=""></script></head><body><div id="__next"><div class="Home_container__bCOhY"><main class="Home_main__nLjiQ"><h1 class="Home_title__T09hD"><a href="https://nextjs.org">Next.js</a> / <a href="https://plotly.com/javascript/">Plotly.js</a> issue</h1><p>This example attempts to import plotly.js in a next.js app (e.g. in order to use <a href="https://plotly.com/javascript/static-image-export/" target="_blank">the Plotly.toImage function</a>).</p><p>plotly.js is imported asynchronously inside an event handler:</p><pre>&lt;Plot
+    onInitialized={async (figure, graphDiv) =&gt; {
+        console.log(&quot;Initialized:&quot;, figure, graphDiv)
+        const Plotly = (await import(&quot;plotly.js&quot;)).default
+        console.log(&quot;imported plotly.js!&quot;)
+    }}
+    data={[{type: &#x27;bar&#x27;, x: [1, 2, 3], y: [2, 5, 3]}]}
+    layout={ {width: 600, height: 400, title: &#x27;A simple plot&#x27;} }
+/&gt;</pre><p>following <a href="https://nextjs.org/docs/advanced-features/dynamic-import#with-external-libraries" target="_blank">the &quot;external libraries&quot; example in the Next.js dynamic-imports documentation</a>.</p><p>However, during the import, a <code>TypeError: str2arr is not a function</code> error is raised:</p><p style="position:relative;width:100%;aspect-ratio:854 / 716"><img alt="Error screenshot" loading="lazy" decoding="async" data-nimg="fill" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" src="/error.png"/></p><details><summary>Stack trace</summary><pre class="code">
+
+Uncaught (in promise) TypeError: str2arr is not a function
+at eval (VM1676 avif.js:20:16)
+at ./node_modules/probe-image-size/lib/parse_stream/avif.js (node_modules_plotly_js_lib_index_js.js:15212:1)
+at options.factory (webpack.js?ts=1678066002993:713:31)
+at __webpack_require__ (webpack.js?ts=1678066002993:37:33)
+at fn (webpack.js?ts=1678066002993:368:21)
+at eval (VM1675 parsers_stream.js:4:9)
+at ./node_modules/probe-image-size/lib/parsers_stream.js (node_modules_plotly_js_lib_index_js.js:15432:1)
+at options.factory (webpack.js?ts=1678066002993:713:31)
+at __webpack_require__ (webpack.js?ts=1678066002993:37:33)
+at fn (webpack.js?ts=1678066002993:368:21)
+at eval (VM1674 stream.js:5:19)
+at ./node_modules/probe-image-size/stream.js (node_modules_plotly_js_lib_index_js.js:15454:1)
+at options.factory (webpack.js?ts=1678066002993:713:31)
+at __webpack_require__ (webpack.js?ts=1678066002993:37:33)
+at fn (webpack.js?ts=1678066002993:368:21)
+at eval (VM1673 common.js:4:21)
+at ./node_modules/probe-image-size/lib/common.js (node_modules_plotly_js_lib_index_js.js:15179:1)
+at options.factory (webpack.js?ts=1678066002993:713:31)
+at __webpack_require__ (webpack.js?ts=1678066002993:37:33)
+at fn (webpack.js?ts=1678066002993:368:21)
+at eval (VM1672 avif.js:13:21)
+at ./node_modules/probe-image-size/lib/parse_sync/avif.js (node_modules_plotly_js_lib_index_js.js:15322:1)
+at options.factory (webpack.js?ts=1678066002993:713:31)
+at __webpack_require__ (webpack.js?ts=1678066002993:37:33)
+at fn (webpack.js?ts=1678066002993:368:21)
+at eval (VM1671 parsers_sync.js:5:9)
+at ./node_modules/probe-image-size/lib/parsers_sync.js (node_modules_plotly_js_lib_index_js.js:15443:1)
+at options.factory (webpack.js?ts=1678066002993:713:31)
+at __webpack_require__ (webpack.js?ts=1678066002993:37:33)
+at fn (webpack.js?ts=1678066002993:368:21)
+at eval (VM1670 sync.js:4:15)
+at ./node_modules/probe-image-size/sync.js (node_modules_plotly_js_lib_index_js.js:15465:1)
+at options.factory (webpack.js?ts=1678066002993:713:31)
+at __webpack_require__ (webpack.js?ts=1678066002993:37:33)
+at fn (webpack.js?ts=1678066002993:368:21)
+at eval (VM1669 helpers.js:3:17)
+at ./node_modules/plotly.js/src/traces/image/helpers.js (node_modules_plotly_js_lib_index_js.js:12032:1)
+at options.factory (webpack.js?ts=1678066002993:713:31)
+at __webpack_require__ (webpack.js?ts=1678066002993:37:33)
+at fn (webpack.js?ts=1678066002993:368:21)
+at eval (VM1668 calc.js:8:21)
+at ./node_modules/plotly.js/src/traces/image/calc.js (node_modules_plotly_js_lib_index_js.js:11988:1)
+at options.factory (webpack.js?ts=1678066002993:713:31)
+at __webpack_require__ (webpack.js?ts=1678066002993:37:33)
+at fn (webpack.js?ts=1678066002993:368:21)
+at eval (VM1664 index.js:6:11)
+at ./node_modules/plotly.js/src/traces/image/index.js (node_modules_plotly_js_lib_index_js.js:12054:1)
+at options.factory (webpack.js?ts=1678066002993:713:31)
+at __webpack_require__ (webpack.js?ts=1678066002993:37:33)
+at fn (webpack.js?ts=1678066002993:368:21)
+eval @ VM1676 avif.js:20
+./node_modules/probe-image-size/lib/parse_stream/avif.js @ node_modules_plotly_js_lib_index_js.js:15212
+options.factory @ webpack.js?ts=1678066002993:713
+__webpack_require__ @ webpack.js?ts=1678066002993:37
+fn @ webpack.js?ts=1678066002993:368
+eval @ VM1675 parsers_stream.js:4
+./node_modules/probe-image-size/lib/parsers_stream.js @ node_modules_plotly_js_lib_index_js.js:15432
+options.factory @ webpack.js?ts=1678066002993:713
+__webpack_require__ @ webpack.js?ts=1678066002993:37
+fn @ webpack.js?ts=1678066002993:368
+eval @ VM1674 stream.js:5
+./node_modules/probe-image-size/stream.js @ node_modules_plotly_js_lib_index_js.js:15454
+options.factory @ webpack.js?ts=1678066002993:713
+__webpack_require__ @ webpack.js?ts=1678066002993:37
+fn @ webpack.js?ts=1678066002993:368
+eval @ VM1673 common.js:4
+./node_modules/probe-image-size/lib/common.js @ node_modules_plotly_js_lib_index_js.js:15179
+options.factory @ webpack.js?ts=1678066002993:713
+__webpack_require__ @ webpack.js?ts=1678066002993:37
+fn @ webpack.js?ts=1678066002993:368
+eval @ VM1672 avif.js:13
+./node_modules/probe-image-size/lib/parse_sync/avif.js @ node_modules_plotly_js_lib_index_js.js:15322
+options.factory @ webpack.js?ts=1678066002993:713
+__webpack_require__ @ webpack.js?ts=1678066002993:37
+fn @ webpack.js?ts=1678066002993:368
+eval @ VM1671 parsers_sync.js:5
+./node_modules/probe-image-size/lib/parsers_sync.js @ node_modules_plotly_js_lib_index_js.js:15443
+options.factory @ webpack.js?ts=1678066002993:713
+__webpack_require__ @ webpack.js?ts=1678066002993:37
+fn @ webpack.js?ts=1678066002993:368
+eval @ VM1670 sync.js:4
+./node_modules/probe-image-size/sync.js @ node_modules_plotly_js_lib_index_js.js:15465
+options.factory @ webpack.js?ts=1678066002993:713
+__webpack_require__ @ webpack.js?ts=1678066002993:37
+fn @ webpack.js?ts=1678066002993:368
+eval @ VM1669 helpers.js:3
+./node_modules/plotly.js/src/traces/image/helpers.js @ node_modules_plotly_js_lib_index_js.js:12032
+options.factory @ webpack.js?ts=1678066002993:713
+__webpack_require__ @ webpack.js?ts=1678066002993:37
+fn @ webpack.js?ts=1678066002993:368
+eval @ VM1668 calc.js:8
+./node_modules/plotly.js/src/traces/image/calc.js @ node_modules_plotly_js_lib_index_js.js:11988
+options.factory @ webpack.js?ts=1678066002993:713
+__webpack_require__ @ webpack.js?ts=1678066002993:37
+fn @ webpack.js?ts=1678066002993:368
+eval @ VM1664 index.js:6
+./node_modules/plotly.js/src/traces/image/index.js @ node_modules_plotly_js_lib_index_js.js:12054
+options.factory @ webpack.js?ts=1678066002993:713
+__webpack_require__ @ webpack.js?ts=1678066002993:37
+fn @ webpack.js?ts=1678066002993:368
+eval @ VM1663 image.js:3
+./node_modules/plotly.js/lib/image.js @ node_modules_plotly_js_lib_index_js.js:6092
+options.factory @ webpack.js?ts=1678066002993:713
+__webpack_require__ @ webpack.js?ts=1678066002993:37
+fn @ webpack.js?ts=1678066002993:368
+eval @ VM1136 index.js:18
+./node_modules/plotly.js/lib/index.js @ node_modules_plotly_js_lib_index_js.js:6103
+options.factory @ webpack.js?ts=1678066002993:713
+__webpack_require__ @ webpack.js?ts=1678066002993:37
+fn @ webpack.js?ts=1678066002993:368
+__webpack_require__.t @ webpack.js?ts=1678066002993:117
+await in __webpack_require__.t (async)
+figureCallback @ factory.js?0867:196
+eval @ factory.js?0867:104
+Promise.then (async)
+updatePlotly @ factory.js?0867:95
+componentDidMount @ factory.js?0867:119
+commitLayoutEffectOnFiber @ react-dom.development.js?ac89:23305
+commitLayoutMountEffects_complete @ react-dom.development.js?ac89:24688
+commitLayoutEffects_begin @ react-dom.development.js?ac89:24674
+commitLayoutEffects @ react-dom.development.js?ac89:24612
+commitRootImpl @ react-dom.development.js?ac89:26823
+commitRoot @ react-dom.development.js?ac89:26682
+performSyncWorkOnRoot @ react-dom.development.js?ac89:26117
+flushSyncCallbacks @ react-dom.development.js?ac89:12042
+eval @ react-dom.development.js?ac89:25651</pre></details><p>Clicking through on the error shows this, from avif.js:</p><p style="position:relative;width:100%;aspect-ratio:519 / 314"><img alt="avif.js imports and error line" loading="lazy" decoding="async" data-nimg="fill" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" src="/avif.js.png"/></p><details><summary>Excerpted code</summary><pre class="code">// Utils used to parse miaf-based files (avif/heic/heif)
+//
+//  - image collections are not supported (only last size is reported)
+//  - images with metadata encoded after image data are not supported
+//  - images without any `ispe` box are not supported
+//
+
+&#x27;use strict&#x27;;
+
+/* eslint-disable consistent-return */
+
+
+var ParserStream = require(&#x27;../common&#x27;).ParserStream;
+var str2arr      = require(&#x27;../common&#x27;).str2arr;
+var sliceEq      = require(&#x27;../common&#x27;).sliceEq;
+var readUInt32BE = require(&#x27;../common&#x27;).readUInt32BE;
+var miaf         = require(&#x27;../miaf_utils&#x27;);
+var exif         = require(&#x27;../exif_utils&#x27;);
+
+var SIG_FTYP = str2arr(&#x27;ftyp&#x27;);
+</pre></details><p>This code appears to come from <a href="https://github.com/nodeca/probe-image-size/blob/7.2.3/lib/parse_stream/avif.js#L1-L18" target="_blank"><code>lib/parse_stream/avif.js</code> in nodeca/probe-image-size@7.2.3</a>.</p><p>Why is this error occurring? Is something in the build/minification/code-splitting pipeline not including code that plotly.js needs (because it doesn&#x27;t know it&#x27;s being imported)?</p><p>See <a href="./probe-image-size-import">/probe-image-size-import</a> for an even simpler demonstration that importing probe-image-size is broken in Next.js.</p></main></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{}},"page":"/to-image","query":{},"buildId":"9gU2xRJ3DHodG3wnoSdW8","nextExport":true,"autoExport":true,"isFallback":false,"scriptLoader":[]}</script></body></html>
