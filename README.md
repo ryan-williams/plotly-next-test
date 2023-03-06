@@ -1,6 +1,10 @@
 # plotly.js / next.js issues
 
-**Update:** it seems like the errors in the latter two pages below manifest on macOS but not Linux, possibly due to macOS filesystem case-insensitivity.
+**Update:** it seems like the errors in the latter two pages below are due to [an ill-advised `NODE_PATH=.` in my dotfiles](https://github.com/ryan-williams/js-helpers/blob/c3aecb1905e7d45a271fe0e5e74e78e903e6d820/.js-rc#L4).
+
+The first page, showing how long it takes for `react-plotly.js` to lazily load (after initial page render) still makes sense, and a "production version" can be seen here: [runsascoded.com/plotly-next-test](https://runsascoded.com/plotly-next-test/). 
+
+---
 
 Boot dev mode:
 ```bash
