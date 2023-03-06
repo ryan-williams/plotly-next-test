@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import dynamic from "next/dynamic";
-
+import common from "probe-image-size/lib/common"
 const Plot = dynamic(() => import("react-plotly.js"), { ssr: false, })
 
 export default function Home() {
@@ -16,7 +16,7 @@ export default function Home() {
                 <h1 className={styles.title}><a href="https://nextjs.org">Next.js</a> / <a href={"https://plotly.com/javascript/"}>Plotly.js</a> issue</h1>
                 <Plot
                     onInitialized={async (figure, graphDiv) => {
-                        console.log("Initialized:", figure, graphDiv)
+                        console.log("Initialized:", figure, graphDiv, /*"common:", common*/)
                         const Plotly = (await import("plotly.js")).default
                         console.log("imported plotly.js!")
                     }}
@@ -34,7 +34,7 @@ export default function Home() {
     data={[{type: 'bar', x: [1, 2, 3], y: [2, 5, 3]}]}
     layout={ {width: 600, height: 400, title: 'A simple plot'} }
 />`}</pre>
-                <p>following <a href={"https://nextjs.org/docs/advanced-features/dynamic-import#with-external-libraries"} target={"_blank"} >the "external libraries" example in the Next.js dynamic-imports documentation</a>.</p>
+                <p>following <a href={"https://nextjs.org/docs/advanced-features/dynamic-import#with-external-libraries"} target={"_blank"} >the &quot;external libraries&quot; example in the Next.js dynamic-imports documentation</a>.</p>
                 <p>However, during the import, a <code>TypeError: str2arr is not a function</code> error is raised:</p>
                 <p style={{
                     position: "relative",
@@ -200,7 +200,7 @@ var SIG_FTYP = str2arr('ftyp');
 `}</pre>
                 </details>
                 <p>This code appears to come from <a href={"https://github.com/nodeca/probe-image-size/blob/7.2.3/lib/parse_stream/avif.js#L1-L18"} target={"_blank"}><code>lib/parse_stream/avif.js</code> in nodeca/probe-image-size@7.2.3</a>.</p>
-                <p>Why is this error occurring? Is something in the build/minification/code-splitting pipeline not including code that plotly.js needs (because it doesn't know it's being imported)?</p>
+                <p>{`Why is this error occurring? Is something in the build/minification/code-splitting pipeline not including code that plotly.js needs (because it doesn't know it's being imported)?`}</p>
             </main>
         </div>
     )

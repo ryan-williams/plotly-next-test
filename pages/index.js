@@ -27,11 +27,11 @@ export default function Home() {
                 />
                 {delayMs && <p>Time from first render to plot initialized: <strong>{delayMs}ms</strong></p>}
                 <p>
-                    plotly.js (and therefore react-plotly.js) can't render server-side (<a href={"https://github.com/plotly/plotly.js/issues/5361"} target={"_blank"}>plotly.js#5361</a>, <a href={"https://github.com/plotly/react-plotly.js/issues/21"} target={"_blank"}>react-plotly.js#21</a>), so the above uses <a href={"https://nextjs.org/docs/advanced-features/dynamic-import"} target={"_blank"}>next/dynamic</a> to disable importing <code>react-plotly.js</code> on the server:
+                    plotly.js (and therefore react-plotly.js) can&apos;t render server-side (<a href={"https://github.com/plotly/plotly.js/issues/5361"} target={"_blank"}>plotly.js#5361</a>, <a href={"https://github.com/plotly/react-plotly.js/issues/21"} target={"_blank"}>react-plotly.js#21</a>), so the above uses <a href={"https://nextjs.org/docs/advanced-features/dynamic-import"} target={"_blank"}>next/dynamic</a> to disable importing <code>react-plotly.js</code> on the server:
                 </p>
                 <pre className={"code"}>{`const Plot = dynamic(() => import("react-plotly.js"), {ssr: false,})`}</pre>
                 <p>This works, but it means the plot appeared on the page ≈{delayMs ? delayMs / 1000 : `…`}s after the initial page render, which is not ideal.</p>
-                <p>Furthermore, importing plotly.js this way doesn't work (e.g. for accessing <a href={"https://plotly.com/javascript/static-image-export/"} target={"_blank"}>static image export functionality</a>); see <a href={"./to-image"}>/to-image</a>.</p>
+                <p>Furthermore, importing plotly.js this way doesn&apos;t work (e.g. for accessing <a href={"https://plotly.com/javascript/static-image-export/"} target={"_blank"}>static image export functionality</a>); see <a href={"./to-image"}>/to-image</a>.</p>
             </main>
         </div>
     )
