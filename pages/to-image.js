@@ -3,15 +3,12 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import dynamic from "next/dynamic";
-import common from "probe-image-size/lib/common"
 const Plot = dynamic(() => import("react-plotly.js"), { ssr: false, })
 
 export default function Home() {
     return (
         <div className={styles.container}>
-            <Head>
-                <title>Plotly.js / Next.js Issue</title>
-            </Head>
+            <Head><title>Plotly.js / Next.js Issue</title></Head>
             <main className={styles.main}>
                 <h1 className={styles.title}><a href="https://nextjs.org">Next.js</a> / <a href={"https://plotly.com/javascript/"}>Plotly.js</a> issue</h1>
                 <Plot
@@ -41,7 +38,7 @@ export default function Home() {
                     width: "100%",
                     aspectRatio: "854 / 716",
                 }}>
-                    <Image src={"/error.png"} alt={"Error screenshot"} fill />
+                    <Image src={"/error.png"} alt={"Error screenshot"} layout="fill" />
                 </p>
                 <details><summary>Stack trace</summary>
                     <pre className={"code"}>{`
@@ -174,7 +171,7 @@ flushSyncCallbacks @ react-dom.development.js?ac89:12042
 eval @ react-dom.development.js?ac89:25651`}</pre>
                 </details>
                 <p>Clicking through on the error shows this, from avif.js:</p>
-                <p style={{ position: "relative", width: "100%", aspectRatio: "519 / 314", }}><Image src={"/avif.js.png"} alt={"avif.js imports and error line"} fill /></p>
+                <p style={{ position: "relative", width: "100%", aspectRatio: "519 / 314", }}><Image src={"/avif.js.png"} alt={"avif.js imports and error line"} layout="fill" /></p>
                 <details>
                     <summary>Excerpted code</summary>
                     <pre className={"code"}>{`// Utils used to parse miaf-based files (avif/heic/heif)
@@ -201,6 +198,7 @@ var SIG_FTYP = str2arr('ftyp');
                 </details>
                 <p>This code appears to come from <a href={"https://github.com/nodeca/probe-image-size/blob/7.2.3/lib/parse_stream/avif.js#L1-L18"} target={"_blank"}><code>lib/parse_stream/avif.js</code> in nodeca/probe-image-size@7.2.3</a>.</p>
                 <p>{`Why is this error occurring? Is something in the build/minification/code-splitting pipeline not including code that plotly.js needs (because it doesn't know it's being imported)?`}</p>
+                <p>See <a href={"./probe-image-size-import"}>/probe-image-size-import</a> for an even simpler demonstration that importing probe-image-size is broken in Next.js.</p>
             </main>
         </div>
     )
