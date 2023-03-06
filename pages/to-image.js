@@ -1,5 +1,4 @@
-import React, {useState} from 'react';
-import Head from 'next/head'
+import React from 'react';
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import dynamic from "next/dynamic";
@@ -8,7 +7,6 @@ const Plot = dynamic(() => import("react-plotly.js"), { ssr: false, })
 export default function Home() {
     return (
         <div className={styles.container}>
-            <Head><title>Plotly.js / Next.js Issue</title></Head>
             <main className={styles.main}>
                 <h1 className={styles.title}><a href="https://nextjs.org">Next.js</a> / <a href={"https://plotly.com/javascript/"}>Plotly.js</a> issue</h1>
                 <Plot
@@ -33,12 +31,8 @@ export default function Home() {
 />`}</pre>
                 <p>following <a href={"https://nextjs.org/docs/advanced-features/dynamic-import#with-external-libraries"} target={"_blank"} >the &quot;external libraries&quot; example in the Next.js dynamic-imports documentation</a>.</p>
                 <p>However, during the import, a <code>TypeError: str2arr is not a function</code> error is raised:</p>
-                <p style={{
-                    position: "relative",
-                    width: "100%",
-                    aspectRatio: "854 / 716",
-                }}>
-                    <Image src={"/error.png"} alt={"Error screenshot"} layout="fill" />
+                <p style={{ position: "relative", width: "100%", aspectRatio: "854 / 716", }}>
+                    <Image src={"/error.png"} alt={"Error screenshot"} fill />
                 </p>
                 <details><summary>Stack trace</summary>
                     <pre className={"code"}>{`
@@ -171,7 +165,7 @@ flushSyncCallbacks @ react-dom.development.js?ac89:12042
 eval @ react-dom.development.js?ac89:25651`}</pre>
                 </details>
                 <p>Clicking through on the error shows this, from avif.js:</p>
-                <p style={{ position: "relative", width: "100%", aspectRatio: "519 / 314", }}><Image src={"/avif.js.png"} alt={"avif.js imports and error line"} layout="fill" /></p>
+                <p style={{ position: "relative", width: "100%", aspectRatio: "519 / 314", }}><Image src={"/avif.js.png"} alt={"avif.js imports and error line"} fill /></p>
                 <details>
                     <summary>Excerpted code</summary>
                     <pre className={"code"}>{`// Utils used to parse miaf-based files (avif/heic/heif)
