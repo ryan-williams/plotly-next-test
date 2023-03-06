@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  basePath: "/plotly-next-test",
+  basePath: process.env.NEXT_BASE_PATH,
   // swcMinify: true,
   // transpilePackages: [ 'plotly.js', 'probe-image-size'],
   images: {

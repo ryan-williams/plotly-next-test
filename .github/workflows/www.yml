@@ -9,7 +9,7 @@ jobs:
       - run: npm install
       - run: |
           export PATH=node_modules/.bin:$PATH
-          echo "PATH: $PATH"
+          export NEXT_BASE_PATH=/plotly-next-test
           next build
           next export
           touch out/.nojekyll
