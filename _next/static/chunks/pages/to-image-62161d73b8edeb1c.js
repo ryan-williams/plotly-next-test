@@ -1028,7 +1028,7 @@ function Home() {
                         aspectRatio: "854 / 716"
                     },
                     children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)((next_image__WEBPACK_IMPORTED_MODULE_2___default()), {
-                        src: "/error.png",
+                        src: "./error.png",
                         alt: "Error screenshot",
                         fill: true
                     })
@@ -1054,7 +1054,7 @@ function Home() {
                         aspectRatio: "519 / 314"
                     },
                     children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)((next_image__WEBPACK_IMPORTED_MODULE_2___default()), {
-                        src: "/avif.js.png",
+                        src: "./avif.js.png",
                         alt: "avif.js imports and error line",
                         fill: true
                     })
