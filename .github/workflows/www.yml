@@ -1,0 +1,19 @@
+name: GitHub Pages
+on: { push: { branches: [ main ] } }
+jobs:
+  build:
+    name: Build + deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: npm install
+      - run: |
+          export PATH=node_modules/.bin:$PATH
+          echo "PATH: $PATH"
+          next build
+          next export
+          touch out/.nojekyll
+      - uses: JamesIves/github-pages-deploy-action@4.1.1
+        with:
+          branch: ghp
+          folder: out
