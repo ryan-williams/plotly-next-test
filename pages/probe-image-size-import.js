@@ -12,7 +12,7 @@ export default function Home() {
                 <pre>{`import common from "probe-image-size/lib/common"`}</pre>
                 <p>This throws a <code>TypeError: str2arr is not a function</code> error from <a href={"https://github.com/nodeca/probe-image-size/blob/7.2.3/lib/parse_stream/avif.js#L20"} target={"_blank"}>this line in <code>nodeca/probe-image-size@7.2.3/lib/parse_stream/avif.js</code></a>.</p>
                 <p style={{ position: "relative", width: "100%", aspectRatio: "735 / 378", }}>
-                    <Image src={"/probe-image-import-error.png"} alt={"Error screenshot"} fill />
+                    <Image src={"./probe-image-import-error.png"} alt={"Error screenshot"} fill />
                 </p>
                 <p>This is also the cause of the error importing plotly.js in <a href={"./to-image"}>/to-image</a>.</p>
             </main>

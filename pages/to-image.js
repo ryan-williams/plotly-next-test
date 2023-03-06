@@ -32,7 +32,7 @@ export default function Home() {
                 <p>following <a href={"https://nextjs.org/docs/advanced-features/dynamic-import#with-external-libraries"} target={"_blank"} >the &quot;external libraries&quot; example in the Next.js dynamic-imports documentation</a>.</p>
                 <p>However, during the import, a <code>TypeError: str2arr is not a function</code> error is raised:</p>
                 <p style={{ position: "relative", width: "100%", aspectRatio: "854 / 716", }}>
-                    <Image src={"/error.png"} alt={"Error screenshot"} fill />
+                    <Image src={"./error.png"} alt={"Error screenshot"} fill />
                 </p>
                 <details><summary>Stack trace</summary>
                     <pre className={"code"}>{`
@@ -165,7 +165,7 @@ flushSyncCallbacks @ react-dom.development.js?ac89:12042
 eval @ react-dom.development.js?ac89:25651`}</pre>
                 </details>
                 <p>Clicking through on the error shows this, from avif.js:</p>
-                <p style={{ position: "relative", width: "100%", aspectRatio: "519 / 314", }}><Image src={"/avif.js.png"} alt={"avif.js imports and error line"} fill /></p>
+                <p style={{ position: "relative", width: "100%", aspectRatio: "519 / 314", }}><Image src={"./avif.js.png"} alt={"avif.js imports and error line"} fill /></p>
                 <details>
                     <summary>Excerpted code</summary>
                     <pre className={"code"}>{`// Utils used to parse miaf-based files (avif/heic/heif)
